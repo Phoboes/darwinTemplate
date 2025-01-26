@@ -3,9 +3,9 @@ import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig = {
   /* config options here */
-  experimental: {
-    reactCompiler: false,
-  },
+  // experimental: {
+  //   reactCompiler: false,
+  // },
   images: {
     remotePatterns: [
       {
