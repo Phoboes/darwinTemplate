@@ -29,14 +29,13 @@ export default buildConfig({
       bucket: process.env.NEXT_PUBLIC_AWS_BUCKET || "",
       config: {
         credentials: {
-          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-          secretAccessKey: process.env.AWS_ACCESS_SECRET,
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+          secretAccessKey: process.env.AWS_ACCESS_SECRET || "",
         },
-        region: process.env.NEXT_PUBLIC_AWS_REGION,
+        region: process.env.NEXT_PUBLIC_AWS_REGION || "",
         // ... Other S3 configuration
       },
       disableLocalStorage: true,
-      endpoint: `https://${process.env.NEXT_PUBLIC_AWS_BUCKET}.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/`,
     }),
   ],
 
