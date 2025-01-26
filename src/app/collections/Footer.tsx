@@ -2,6 +2,9 @@ import type { GlobalConfig } from "payload";
 
 export const Footer: GlobalConfig = {
   slug: "footer",
+  typescript: {
+    interface: "Footer",
+  },
   fields: [
     { name: "Address line 1", type: "text" },
     { name: "Address line 2", type: "text" },
