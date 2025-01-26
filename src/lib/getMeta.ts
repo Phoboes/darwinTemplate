@@ -6,7 +6,7 @@ export default async function getMeta() {
   const result = await payload.findGlobal({
     slug: 'meta', // required
     depth: 2,
-    locale: 'en',
+    locale: 'all',
     fallbackLocale: false,
     overrideAccess: true,
     showHiddenFields: true,
