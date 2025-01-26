@@ -26,7 +26,7 @@ export default buildConfig({
         //   prefix,
         // },
       },
-      bucket: process.env.NEXT_PUBLIC_AWS_BUCKET,
+      bucket: process.env.NEXT_PUBLIC_AWS_BUCKET || "",
       config: {
         credentials: {
           accessKeyId: process.env.AWS_ACCESS_KEY_ID,
