@@ -21,7 +21,7 @@ interface ContactData {
   "Address line 2": string | undefined;
   City: string | undefined;
   Postcode: string | undefined;
-  email: string;
+  Email: string;
   "Phone number": string;
 }
 
@@ -57,7 +57,7 @@ export default async function Home() {
           ) : null}
         </div>
         <ContactButtons
-          email={contactData.email}
+          email={contactData.Email}
           phoneNumber={contactData["Phone number"]}
         />
       </main>

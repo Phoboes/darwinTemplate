@@ -7,7 +7,7 @@ interface ContactData {
   'Address line 2': string | undefined
   City: string | undefined
   Postcode: string | undefined
-  email: string
+  Email: string
   'Phone number': string
 }
 
@@ -21,5 +21,16 @@ export default async function getContact(): Promise<ContactData> {
     showHiddenFields: true,
   })
 
-  return result as ContactData
+  console.log('RESULT:', result)
+
+  const returnObj = {
+    'Address line 1': result['Address line 1'],
+    'Address line 2': result['Address line 2'],
+    City: result['City'],
+    Postcode: result['Postcode'],
+    Email: result['Email'],
+    'Phone number': result['Phone number'],
+  }
+
+  return returnObj as ContactData
 }
