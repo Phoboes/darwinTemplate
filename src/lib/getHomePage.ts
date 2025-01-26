@@ -18,7 +18,7 @@ export default async function getHomePage(): Promise<HomePageData> {
   const result = await payload.findGlobal({
     slug: 'homepage', // required
     depth: 2,
-    locale: 'en',
+    locale: 'all',
     fallbackLocale: false,
     overrideAccess: true,
     showHiddenFields: true,
