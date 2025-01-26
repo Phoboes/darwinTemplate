@@ -10,7 +10,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"url" varchar,
   	"thumbnail_u_r_l" varchar,
-  	"filename" varchar,
+  	"filename" varchar NOT NULL,
   	"mime_type" varchar,
   	"filesize" numeric,
   	"width" numeric,
@@ -96,7 +96,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE IF NOT EXISTS "meta" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"title" varchar,
-  	"favico_id" integer,
   	"description" varchar,
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
@@ -138,12 +137,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
    WHEN duplicate_object THEN null;
   END $$;
   
-  DO $$ BEGIN
-   ALTER TABLE "meta" ADD CONSTRAINT "meta_favico_id_media_id_fk" FOREIGN KEY ("favico_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
-  EXCEPTION
-   WHEN duplicate_object THEN null;
-  END $$;
-  
   CREATE INDEX IF NOT EXISTS "media_updated_at_idx" ON "media" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "media_created_at_idx" ON "media" USING btree ("created_at");
   CREATE UNIQUE INDEX IF NOT EXISTS "media_filename_idx" ON "media" USING btree ("filename");
@@ -167,8 +160,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "payload_preferences_rels_users_id_idx" ON "payload_preferences_rels" USING btree ("users_id");
   CREATE INDEX IF NOT EXISTS "payload_migrations_updated_at_idx" ON "payload_migrations" USING btree ("updated_at");
   CREATE INDEX IF NOT EXISTS "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");
-  CREATE INDEX IF NOT EXISTS "homepage_image_idx" ON "homepage" USING btree ("image_id");
-  CREATE INDEX IF NOT EXISTS "meta_favico_idx" ON "meta" USING btree ("favico_id");`)
+  CREATE INDEX IF NOT EXISTS "homepage_image_idx" ON "homepage" USING btree ("image_id");`)
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
