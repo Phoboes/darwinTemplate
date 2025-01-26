@@ -1,17 +1,17 @@
-import type { GlobalConfig } from "payload";
+import type { GlobalConfig } from 'payload'
 
 export const Meta: GlobalConfig = {
-  slug: "meta",
+  slug: 'meta',
   typescript: {
-    interface: "Meta",
+    interface: 'Meta',
   },
   fields: [
-    { name: "title", type: "text" },
-    {
-      name: "favico",
-      type: "upload",
-      relationTo: "media",
-    },
-    { name: "description", type: "text" },
+    { name: 'title', type: 'text' },
+    // {
+    //   name: "favico",
+    //   type: "upload",
+    //   relationTo: "media",
+    // },
+    { name: 'description', type: 'text' },
   ],
-};
+}

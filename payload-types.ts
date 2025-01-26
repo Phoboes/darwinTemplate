@@ -77,7 +77,7 @@ export interface Media {
   createdAt: string;
   url?: string | null;
   thumbnailURL?: string | null;
-  filename?: string | null;
+  filename: string;
   mimeType?: string | null;
   filesize?: number | null;
   width?: number | null;
@@ -259,7 +259,6 @@ export interface Footer {
 export interface Meta {
   id: number;
   title?: string | null;
-  favico?: (number | null) | Media;
   description?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -297,7 +296,6 @@ export interface FooterSelect<T extends boolean = true> {
  */
 export interface MetaSelect<T extends boolean = true> {
   title?: T;
-  favico?: T;
   description?: T;
   updatedAt?: T;
   createdAt?: T;
