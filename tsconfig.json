@@ -20,8 +20,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@payload/*": ["./payload/*"],
-      "@payload-config": ["./payload.config.tsx"]
+      "@payload/*": ["./src/payload/*"],
+      "@payload-config": ["./src/payload.config.tsx"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
