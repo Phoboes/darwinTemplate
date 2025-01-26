@@ -2,7 +2,19 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 const payload = await getPayload({ config })
 
-export default async function getHomePage() {
+interface Media {
+  filename: string
+  title: string
+  alt: string
+}
+
+interface HomePageData {
+  title: string
+  image: Media
+  content: string
+}
+
+export default async function getHomePage(): Promise<HomePageData> {
   const result = await payload.findGlobal({
     slug: 'homepage', // required
     depth: 2,
@@ -12,5 +24,5 @@ export default async function getHomePage() {
     showHiddenFields: true,
   })
 
-  return result
+  return result as HomePageData
 }

@@ -1,12 +1,33 @@
 import getHomePage from "../lib/getHomePage";
+import getContact from "../lib/getContact";
 import Image from "next/image";
 import Footer from "./components/Footer";
-import { getContact } from "../lib/getContact";
 import ContactButtons from "./components/ContactButtons";
 
+interface Media {
+  filename: string;
+  title: string;
+  alt: string;
+}
+
+interface HomePageData {
+  title: string;
+  image: Media;
+  content: string;
+}
+
+interface ContactData {
+  "Address line 1": string | undefined;
+  "Address line 2": string | undefined;
+  City: string | undefined;
+  Postcode: string | undefined;
+  email: string;
+  "Phone number": string;
+}
+
 export default async function Home() {
-  const data = await getHomePage();
-  const contactData = await getContact();
+  const data = (await getHomePage()) as HomePageData;
+  const contactData = (await getContact()) as ContactData;
   console.log(data);
   return (
     <>
@@ -36,7 +57,7 @@ export default async function Home() {
           ) : null}
         </div>
         <ContactButtons
-          email={contactData["Email"]}
+          email={contactData.email}
           phoneNumber={contactData["Phone number"]}
         />
       </main>
