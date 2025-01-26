@@ -1,6 +1,6 @@
-import type { CollectionConfig } from "payload";
+import type { GlobalConfig } from "payload";
 
-export const Footer: CollectionConfig = {
+export const Footer: GlobalConfig = {
   slug: "footer",
   fields: [
     { name: "Address line 1", type: "text" },

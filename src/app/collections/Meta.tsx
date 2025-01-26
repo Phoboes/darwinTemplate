@@ -1,6 +1,6 @@
-import type { CollectionConfig } from "payload";
+import type { GlobalConfig } from "payload";
 
-export const Meta: CollectionConfig = {
+export const Meta: GlobalConfig = {
   slug: "meta",
   fields: [
     { name: "title", type: "text" },
