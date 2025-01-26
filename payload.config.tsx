@@ -5,6 +5,8 @@ import { buildConfig } from "payload";
 import { Page } from "./src/app/collections/Homepage";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { Media } from "./src/app/collections/Media";
+import { Footer } from "@/app/collections/Footer";
+import { Meta } from "@/app/collections/Meta";
 // import { MediaWithPrefix } from "./collections/MediaWithPrefix";
 
 export default buildConfig({
@@ -14,7 +16,7 @@ export default buildConfig({
   // Define and configure your collections in this array
   collections: [Media],
 
-  globals: [Page],
+  globals: [Page, Footer, Meta],
 
   plugins: [
     s3Storage({
@@ -24,15 +26,17 @@ export default buildConfig({
         //   prefix,
         // },
       },
-      bucket: process.env.AWS_BUCKET,
+      bucket: process.env.NEXT_PUBLIC_AWS_BUCKET,
       config: {
         credentials: {
           accessKeyId: process.env.AWS_ACCESS_KEY_ID,
           secretAccessKey: process.env.AWS_ACCESS_SECRET,
         },
-        region: process.env.AWS_REGION,
+        region: process.env.NEXT_PUBLIC_AWS_REGION,
         // ... Other S3 configuration
       },
+      disableLocalStorage: true,
+      endpoint: `https://${process.env.NEXT_PUBLIC_AWS_BUCKET}.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/`,
     }),
   ],
 
