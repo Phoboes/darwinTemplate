@@ -1,17 +1,9 @@
-import { revalidatePath } from 'next/cache'
 import type { GlobalConfig } from 'payload'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
   typescript: {
     interface: 'Footer',
-  },
-  hooks: {
-    afterChange: [
-      async () => {
-        revalidatePath(`/`)
-      },
-    ],
   },
   fields: [
     { name: 'Address line 1', type: 'text' },

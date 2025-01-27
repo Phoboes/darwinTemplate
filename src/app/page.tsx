@@ -25,6 +25,8 @@ interface ContactData {
   "Phone number": string;
 }
 
+export const revalidate = 0;
+
 export default async function Home() {
   const data = (await getHomePage()) as HomePageData;
   const contactData = (await getContact()) as ContactData;

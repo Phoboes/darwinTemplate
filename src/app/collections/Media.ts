@@ -1,4 +1,3 @@
-import { revalidatePath } from 'next/cache'
 import type { CollectionConfig } from 'payload'
 
 // TODO: Return aws url not local
@@ -6,13 +5,6 @@ export const Media: CollectionConfig = {
   slug: 'media',
   typescript: {
     interface: 'Media',
-  },
-  hooks: {
-    afterChange: [
-      async () => {
-        revalidatePath(`/`)
-      },
-    ],
   },
   upload: true,
   access: { read: () => true },
