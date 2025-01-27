@@ -19,6 +19,18 @@
     }
 }
 
+.card {
+    color: #e0e1dd;
+    text-align: center;
+    h3,
+    .card__actions {
+        // color: red;
+        margin: auto;
+        font-weight: bold;
+        z-index: 1000;
+    }
+}
+
 .doc-controls__wrapper {
     transition: all 0.4s ease;
     &:has(#action-save[aria-disabled="true"]) {
@@ -34,6 +46,7 @@
     padding: 10px 20px;
     font-weight: bold;
     background-color: #1d3557;
+    z-index: 800;
     color: #e0e1dd;
     border: transparent;
     border-radius: 1em;
