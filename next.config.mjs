@@ -2,10 +2,10 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig = {
-  /* config options here */
-  // experimental: {
-  //   reactCompiler: false,
-  // },
+  webpack: (config) => {
+    config.resolve.extensions = [...config.resolve.extensions, ".ts", ".tsx"];
+    return config;
+  },
   images: {
     remotePatterns: [
       {
