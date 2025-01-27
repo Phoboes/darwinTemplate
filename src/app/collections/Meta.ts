@@ -9,7 +9,7 @@ export const Meta: GlobalConfig = {
   fields: [
     { name: 'title', type: 'text' },
     {
-      name: 'favico',
+      name: 'favicon',
       type: 'upload',
       relationTo: 'media',
     },
