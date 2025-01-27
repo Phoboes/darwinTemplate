@@ -9,11 +9,11 @@ const metaData = await getMeta();
 export const metadata: Metadata = {
   title: metaData.title || "Homepage",
   description: metaData.description || "Business homepage",
-  // icons: {
-  //   icon: '/favicon.ico', // /public/favicon.ico
-  //   shortcut: '/favicon.ico',
-  //   apple: '/apple-touch-icon.png', // /public/apple-touch-icon.png
-  // }
+  icons: {
+    icon: metaData.favico.url,
+    shortcut: metaData.favico.url,
+    apple: metaData.favico.url,
+  },
 };
 
 export default async function RootLayout({
@@ -21,9 +21,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("META");
-  console.log(metaData);
-
   return (
     <html lang="en">
       <body className={`antialiased text-center m-auto`}>{children}</body>

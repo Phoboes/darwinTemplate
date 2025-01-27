@@ -33,7 +33,7 @@ export default async function Home() {
   const contactData = (await getContact()) as ContactData;
   console.log(data);
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <header className="py-4 navFooter">
         {data.title ? (
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
@@ -41,7 +41,7 @@ export default async function Home() {
           </h1>
         ) : null}
       </header>
-      <main className=" m-8">
+      <main className="flex-grow m-8">
         <div className="flex flex-col justify-center text-center pageFonts">
           {data.image ? (
             <Image
@@ -58,7 +58,11 @@ export default async function Home() {
             <p className="whitespace-pre-wrap px-4 max-w-2xl mx-auto py-8 text-sm md:text-base">
               {data.content}
             </p>
-          ) : null}
+          ) : (
+            <h1 className="text-center text-xl font-bold align-middle">
+              You have not provided any data yet.
+            </h1>
+          )}
         </div>
         <ContactButtons
           email={contactData.Email}
@@ -66,6 +70,6 @@ export default async function Home() {
         />
       </main>
       <Footer footerData={contactData} />
-    </>
+    </div>
   );
 }
