@@ -21,7 +21,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@payload/*": ["./src/payload/*"],
-      "@payload-config": ["./src/payload.config.tsx"]
+      "@payload-config": ["./src/payload.config.jsx"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
