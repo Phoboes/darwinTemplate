@@ -13,7 +13,7 @@ interface ContactData {
 
 export default async function getContact(): Promise<ContactData> {
   const result = await payload.findGlobal({
-    slug: 'footer', // required
+    slug: 'contact', // required
     depth: 2,
     locale: 'all',
     fallbackLocale: false,

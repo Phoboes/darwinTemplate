@@ -1,9 +1,9 @@
 import type { GlobalConfig } from 'payload'
 
-export const Footer: GlobalConfig = {
-  slug: 'footer',
+export const Contact: GlobalConfig = {
+  slug: 'contact',
   typescript: {
-    interface: 'Footer',
+    interface: 'contact',
   },
   fields: [
     { name: 'Address line 1', type: 'text' },

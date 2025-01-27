@@ -1,0 +1,42 @@
+#action-save {
+    transition: all 0.4s ease;
+    border: 1px solid #778da9;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #1d3557;
+    color: #e0e1dd;
+    border: transparent;
+    border-radius: 1em;
+    float: left;
+    &:hover {
+        background-color: #457b9d;
+        color: #ececea;
+        text-decoration: underline;
+    }
+    &[aria-disabled="true"] {
+        opacity: 0;
+        cursor: not-allowed;
+        &:hover {
+            background-color: #1d3557;
+            color: #e0e1dd;
+            text-decoration: none;
+        }
+    }
+}
+
+textarea {
+    min-height: 100px;
+}
+.field-label,
+.doc-header__title,
+.render-title {
+    font-weight: bold;
+}
+
+.doc-tabs {
+    display: none;
+}
+
+.doc-controls__content {
+    flex-grow: 0;
+}

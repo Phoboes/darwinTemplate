@@ -8,6 +8,7 @@ interface Media {
   filename: string;
   title: string;
   alt: string;
+  url: string;
 }
 
 interface HomePageData {
@@ -33,27 +34,28 @@ export default async function Home() {
   console.log(data);
   return (
     <>
-      <header className="border border-emerald-900 py-4 bg-emerald-300">
-        {data.title ? <h1 className="text-3xl">{data.title}</h1> : null}
+      <header className="py-4 navFooter">
+        {data.title ? (
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+            {data.title}
+          </h1>
+        ) : null}
       </header>
       <main className=" m-8">
-        <div
-          className="flex flex-col justify-center text-center border border-red-400
-        
-        "
-        >
+        <div className="flex flex-col justify-center text-center pageFonts">
           {data.image ? (
             <Image
-              src={`https://${process.env.NEXT_PUBLIC_AWS_BUCKET}.s3.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/${data.image.filename}`}
+              src={data.image.url}
               width={500}
               height={500}
+              // fill={true}
               title={data.image.title}
               alt={data.image.alt}
               className="justify-center m-auto my-6"
             />
           ) : null}
           {data.content ? (
-            <p className="whitespace-pre-wrap border border-green-200 px-4 text-left">
+            <p className="whitespace-pre-wrap px-4 max-w-2xl mx-auto py-8 text-sm md:text-base">
               {data.content}
             </p>
           ) : null}
