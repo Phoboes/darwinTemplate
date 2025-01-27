@@ -7,6 +7,12 @@
     font-style: normal;
 }
 
+.imageWrap {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 0 rgba(13, 27, 42, 0.4);
+}
+
 .navFooter {
     background-color: #0d1b2a;
     h1,

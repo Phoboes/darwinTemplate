@@ -9,6 +9,10 @@ const metaData = await getMeta();
 export const metadata: Metadata = {
   title: metaData.title || "Homepage",
   description: metaData.description || "Business homepage",
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       {
