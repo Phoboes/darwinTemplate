@@ -9,5 +9,7 @@ export const Page: GlobalConfig = {
     { name: 'title', type: 'text' },
     { name: 'content', type: 'textarea' },
     { name: 'image', type: 'upload', relationTo: 'media' },
+    { name: 'secondaryTitle', type: 'text' },
+    { name: 'secondaryContent', type: 'textarea' },
   ],
 }

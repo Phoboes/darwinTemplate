@@ -21,8 +21,6 @@ export default async function getContact(): Promise<ContactData> {
     showHiddenFields: true,
   })
 
-  console.log('RESULT:', result)
-
   const returnObj = {
     'Address line 1': result['Address line 1'],
     'Address line 2': result['Address line 2'],

@@ -15,33 +15,39 @@
 
 .navFooter {
     background-color: #0d1b2a;
+
     h1,
     p,
     svg {
-        color: #e0e1dd;
+        color: #dddfe1;
     }
-    p:hover {
-        a,
-        svg {
-            color: #415a77;
+
+    p {
+        &:hover {
+            a,
+            svg {
+                color: #415a77;
+            }
         }
     }
 }
 
 body {
     font-family: "Montserrat";
-    background-color: #e0e1dd;
+    background-color: #cdd2db;
 }
 .actionButtons {
-    a {
-        color: #e0e1dd;
-        background-color: #415a77;
-    }
-    a:hover {
-        color: #e0e1dd;
-        background-color: #1b263b;
-    }
     border-bottom: 1px solid #778da9;
+
+    a {
+        color: #dddfe1;
+        background-color: #415a77;
+
+        &:hover {
+            color: #dddfe1;
+            background-color: #1b263b;
+        }
+    }
 }
 
 .pageFonts {
@@ -49,6 +55,10 @@ body {
         color: #0d1b2a;
         border-top: 1px solid #778da9;
         border-bottom: 1px solid #778da9;
-        background-color: #e0e1dd;
+        background-color: rgb(227, 231, 235);
     }
+}
+
+main {
+    background-color: #e5e8eb;
 }

@@ -13,9 +13,8 @@ export default async function Footer({
 }: {
   footerData: FooterData;
 }) {
-  console.log(footerData);
   return (
-    <footer className="navFooter">
+    <footer className="navFooter md:py-4">
       <div className="flex flex-col md:flex-row md:justify-around max-w-4xl mx-auto">
         <div className="pt-4 px-8 mr-8 text-left w-full py-1 min-w-80 max-w-100 md:py-4 md:w-1/2">
           {footerData["Address line 1"] ||
