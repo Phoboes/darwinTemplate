@@ -7,6 +7,8 @@ import { s3Storage } from "@payloadcms/storage-s3";
 import { Media } from "./app/collections/Media";
 import { Contact } from "@/app/collections/Contact";
 import { Meta } from "@/app/collections/Meta";
+import { Services } from "@/app/collections/Services";
+import { About } from "@/app/collections/About";
 // import { MediaWithPrefix } from "./collections/MediaWithPrefix";
 
 export default buildConfig({
@@ -16,7 +18,7 @@ export default buildConfig({
   // Define and configure your collections in this array
   collections: [Media],
 
-  globals: [Page, Contact, Meta],
+  globals: [Page, Contact, Meta, Services, About],
 
   plugins: [
     s3Storage({

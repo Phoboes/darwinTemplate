@@ -95,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <div className="flex flex-col">
         <header className="py-4 navFooter">
           {data.title ? (
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
