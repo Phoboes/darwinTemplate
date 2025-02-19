@@ -1,34 +1,36 @@
-import { getPayload } from 'payload'
-import config from '@/payload.config'
-const payload = await getPayload({ config })
-
 interface ContactData {
-  'Address line 1': string | undefined
-  'Address line 2': string | undefined
-  City: string | undefined
-  Postcode: string | undefined
-  Email: string
-  'Phone number': string
+  addressLine1: string | undefined
+  addressLine2: string | undefined
+  city: string | undefined
+  postcode: string | undefined
+  email: string
+  phoneNumber: string
 }
 
 export default async function getContact(): Promise<ContactData> {
-  const result = await payload.findGlobal({
-    slug: 'contact', // required
-    depth: 2,
-    locale: 'all',
-    fallbackLocale: false,
-    overrideAccess: true,
-    showHiddenFields: true,
-  })
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact?populate=*`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
+      next: {
+        revalidate: 0, // revalidate cache every 60 seconds
+      },
+    },
+  )
 
-  const returnObj = {
-    'Address line 1': result['Address line 1'],
-    'Address line 2': result['Address line 2'],
-    City: result['City'],
-    Postcode: result['Postcode'],
-    Email: result['Email'],
-    'Phone number': result['Phone number'],
+  if (!response.ok) {
+    throw new Error('Failed to fetch homepage data')
   }
 
-  return returnObj as ContactData
+  const res = await response.json()
+  return {
+    addressLine1: res.data.addressLine1,
+    addressLine2: res.data.addressLine2,
+    city: res.data.city,
+    postcode: res.data.postcode,
+    email: res.data.email,
+    phoneNumber: res.data.phoneNumber,
+  }
 }

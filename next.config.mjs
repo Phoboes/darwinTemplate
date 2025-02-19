@@ -1,5 +1,4 @@
 // import type { NextConfig } from 'next'
-import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig = {
   webpack: (config) => {
@@ -15,8 +14,14 @@ const nextConfig = {
         pathname: `/**`,
         search: "",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3001",
+        pathname: "/uploads/**",
+      },
     ],
   },
 };
 
-export default withPayload(nextConfig);
+export default nextConfig;

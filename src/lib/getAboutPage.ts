@@ -1,21 +1,29 @@
-import { getPayload } from 'payload'
-import config from '@/payload.config'
-const payload = await getPayload({ config })
-
 interface AboutPageData {
   title: string
-  content: string
+  content: object[]
 }
 
 export default async function getAboutPage(): Promise<AboutPageData> {
-  const result = await payload.findGlobal({
-    slug: 'about', // required
-    depth: 2,
-    locale: 'all',
-    fallbackLocale: false,
-    overrideAccess: true,
-    showHiddenFields: true,
-  })
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/about?populate=*`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
+      next: {
+        revalidate: 0, // revalidate cache every 60 seconds
+      },
+    },
+  )
 
-  return result as AboutPageData
+  if (!response.ok) {
+    throw new Error('Failed to fetch About page data')
+  }
+
+  const res = await response.json()
+
+  return {
+    title: res.data.title,
+    content: res.data.blocks,
+  }
 }

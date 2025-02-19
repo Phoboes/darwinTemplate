@@ -1,0 +1,21 @@
+.main {
+    border: 1px solid blue;
+    width: 80%;
+    margin: 0 auto;
+    .wrapper {
+        text-align: left;
+        p {
+            margin: 0.5em 0;
+        }
+        ul {
+            // border: 1px solid red;
+            text-align: left;
+            // width: 50%;
+            margin: 0 auto;
+            li {
+                margin-left: 1.5em;
+                list-style: disc;
+            }
+        }
+    }
+}

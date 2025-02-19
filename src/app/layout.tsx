@@ -6,15 +6,17 @@ import "./custom.scss";
 import getContact from "../lib/getContact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import getMeta from "../lib/getMeta";
+
 const contactData = (await getContact()) as ContactData;
-const metaData = await getMeta();
+// const metaData = await getMeta();
 
 interface ContactData {
-  "Address line 1": string | undefined;
-  "Address line 2": string | undefined;
-  City: string | undefined;
-  Postcode: string | undefined;
+  addressLine1: string | undefined;
+  addressLine2: string | undefined;
+  city: string | undefined;
+  postcode: string | undefined;
+  email: string;
+  phoneNumber: string;
 }
 
 export default async function RootLayout({
@@ -25,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`min-h-screen antialiased text-center m-auto`}>
-        <Header title={metaData.title} />
+        <Header />
         {children}
 
         <Footer footerData={contactData} />
