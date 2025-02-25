@@ -23,10 +23,9 @@ const nextConfig = {
       {
         // Add Strapi URL pattern
         protocol: "https",
-        hostname: process.env.NEXT_PUBLIC_STRAPI_URL?.replace(
-          /^https?:\/\//,
-          ""
-        ), // Remove protocol from URL if present
+        hostname: process.env.NEXT_PUBLIC_STRAPI_URL
+          ? process.env.NEXT_PUBLIC_STRAPI_URL.replace(/^https?:\/\//, "")
+          : "localhost", // Provide a fallback hostname
         port: "",
         pathname: "/uploads/**",
       },
