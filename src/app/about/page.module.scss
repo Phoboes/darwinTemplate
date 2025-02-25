@@ -1,6 +1,22 @@
 .main {
-    border: 1px solid blue;
-    width: 80%;
+    h1 {
+        font-weight: bold;
+        font-size: 2.25rem;
+        margin-bottom: 0.5em;
+    }
+    h2 {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 0.5em;
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 0.5em;
+    }
     margin: 0 auto;
     .wrapper {
         text-align: left;

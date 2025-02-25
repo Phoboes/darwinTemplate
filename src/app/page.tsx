@@ -3,11 +3,10 @@ import getContact from "../lib/getContact";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import ContactButtons from "./components/ContactButtons";
-// import getMeta from "../lib/getMeta";
+
 import { Metadata } from "next";
 const data = (await getHomePage()) as HomePageData;
 const contactData = (await getContact()) as ContactData;
-// const metaData = await getMeta();
 
 interface Media {
   name: string;
@@ -18,9 +17,54 @@ interface Media {
 
 interface HomePageData {
   title: string;
-  landingPageImage: Media | undefined;
+  landingPageImage: Media;
   content: string;
+  secondaryTitle: string;
   secondaryContent: string;
+  seo: SeoData[];
+}
+interface SeoData {
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  preventIndexing: boolean;
+  favicon: {
+    url?: string | null;
+  };
+  shareImage: {
+    url?: string | null;
+  };
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  // const faviconUrl = data.seo?.[0]?.favicon?.url
+  //   ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.seo?.[0]?.favicon?.url}`
+  //   : undefined;
+  // console.log(faviconUrl);
+  return {
+    title: data.seo?.[0]?.metaTitle ?? "Our Services",
+    description: data.seo?.[0]?.metaDescription ?? "",
+    keywords: data.seo?.[0]?.keywords ?? [],
+
+    openGraph: {
+      title: data.seo?.[0]?.metaTitle ?? "Our Services",
+      description: data.seo?.[0]?.metaDescription ?? "",
+      images: [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.seo?.[0]?.metaTitle ?? "Our Services",
+      description: data.seo?.[0]?.metaDescription ?? "",
+      images: [],
+    },
+    robots: {
+      index: !data.seo?.[0]?.preventIndexing,
+      follow: !data.seo?.[0]?.preventIndexing,
+    },
+    alternates: {
+      canonical: "/services",
+    },
+  };
 }
 
 interface ContactData {
@@ -29,63 +73,12 @@ interface ContactData {
 }
 export const revalidate = 0;
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   return {
-//     title: data.title || metaData.title || "Homepage",
-//     description:
-//       data.content?.slice(0, 160) ||
-//       metaData.description ||
-//       "Business homepage",
-//     openGraph: {
-//       title: data.title || metaData.title || "Homepage",
-//       description:
-//         data.content?.slice(0, 160) ||
-//         metaData.description ||
-//         "Business homepage",
-//       images: data.image
-//         ? [
-//             {
-//               url: data.image.url,
-//               width: 1200,
-//               height: 630,
-//               alt: data.image.alt,
-//             },
-//           ]
-//         : [],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: data.title || metaData.title || "Homepage",
-//       description:
-//         data.content?.slice(0, 160) ||
-//         metaData.description ||
-//         "Business homepage",
-//       images: data.image ? [data.image.url] : [],
-//     },
-//     icons: {
-//       icon: metaData.favicon?.url
-//         ? [
-//             { url: metaData.favicon.url, sizes: "32x32", type: "image/png" },
-//             { url: metaData.favicon.url, sizes: "192x192", type: "image/png" },
-//           ]
-//         : undefined,
-//       apple: metaData.favicon?.url
-//         ? [{ url: metaData.favicon.url, sizes: "180x180", type: "image/png" }]
-//         : undefined,
-//     },
-//     robots: {
-//       index: true,
-//       follow: true,
-//     },
-//   };
-// }
-
 export default async function Home() {
   console.log(data);
   return (
     <>
       <div className="flex flex-col">
-        <main className="flex-grow md:w-2/3 mx-auto shadow-lg">
+        <main className="flex-grow md:w-2/3 mx-auto shadow-lg pb-8">
           {data.title ? (
             <h1 className="text-3xl md:text-4xl py-8 font-bold text-gray-800">
               {data.title}

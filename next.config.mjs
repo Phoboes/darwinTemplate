@@ -20,6 +20,16 @@ const nextConfig = {
         port: "3001",
         pathname: "/uploads/**",
       },
+      {
+        // Add Strapi URL pattern
+        protocol: "https",
+        hostname: process.env.NEXT_PUBLIC_STRAPI_URL?.replace(
+          /^https?:\/\//,
+          ""
+        ), // Remove protocol from URL if present
+        port: "",
+        pathname: "/uploads/**",
+      },
     ],
   },
 };

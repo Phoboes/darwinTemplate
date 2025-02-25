@@ -6,9 +6,36 @@ import "./custom.scss";
 import getContact from "../lib/getContact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import getMetaImages from "../lib/getMetaImages";
+
+const metaImages = await getMetaImages();
+
+export const metadata: Metadata = {
+  icons: {
+    icon: [
+      {
+        rel: "icon",
+        url: metaImages.favicon?.url || "",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    shortcut: [
+      {
+        rel: "shortcut icon",
+        url: metaImages.favicon?.url || "",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+  },
+  other: {
+    "msapplication-TileImage": metaImages.favicon?.url || "",
+    "msapplication-TileColor": "#ffffff",
+  },
+};
 
 const contactData = (await getContact()) as ContactData;
-// const metaData = await getMeta();
 
 interface ContactData {
   addressLine1: string | undefined;
@@ -24,6 +51,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log(await getMetaImages());
   return (
     <html lang="en">
       <body className={`min-h-screen antialiased text-center m-auto`}>

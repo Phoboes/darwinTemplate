@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathname = usePathname();
-
-  console.log(pathname);
   return (
     <header>
       <div className="flex flex-row justify-around py-4 space-x-12 max-w-3xl mx-auto">
